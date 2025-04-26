@@ -10,7 +10,12 @@ app = Flask(__name__)
 
 CORS(app)
 
-connect('rare_diseases', host=os.getenv('MONGO_URI'))
+try:
+    connect('rare_diseases', host=os.getenv('MONGO_URI'))
+    print("MongoDB connection successful!")
+except Exception as e:
+    print("MongoDB connection failed:", e)
+
 
 class DiseaseCard(Document):
     name = StringField(required=True)
@@ -177,6 +182,10 @@ def seed_data():
 
 
 if __name__ == '__main__':
-    connect('rare_diseases', host=os.getenv('MONGO_URI'))
+   try:
+        connect('rare_diseases', host=os.getenv('MONGO_URI'))
+        print("MongoDB connection successful!")
+    except Exception as e:
+        print("MongoDB connection failed:", e)
     app.run(debug=True)
 
