@@ -1,9 +1,12 @@
 from flask import Flask, jsonify, request
+from dotenv import load_dotenv
 from mongoengine import *
 from flask_cors import CORS
+import os
 
+load_dotenv()
 
-connect('rare_diseases', host='mongodb+srv://Admin:@databasecluster.v3bvhqc.mongodb.net/?retryWrites=true&w=majority&appName=DatabaseCluster')
+connect('rare_diseases', host=os.getenv('MONGO_URI'))
 
 app = Flask(__name__)
 CORS(app)
