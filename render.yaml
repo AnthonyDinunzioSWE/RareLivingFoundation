@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: rare-api
+    env: python
+    plan: free
+    buildCommand: ""
+    startCommand: gunicorn app:app
+    envVars:
+      - key: MONGO_URI
+        value: mongodb+srv://Admin:@databasecluster.v3bvhqc.mongodb.net/?retryWrites=true&w=majority&appName=DatabaseCluster
