@@ -7,7 +7,10 @@ import os
 load_dotenv()
 
 app = Flask(__name__)
+
 CORS(app)
+
+connect('rare_diseases', host=os.getenv('MONGO_URI'))
 
 class DiseaseCard(Document):
     name = StringField(required=True)
