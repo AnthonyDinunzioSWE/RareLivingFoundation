@@ -28,7 +28,13 @@ def get_diseases():
         cards = DiseaseCard.objects(name__icontains=query)
     else:
         cards = DiseaseCard.objects()
-    return jsonify([card.to_mongo().to_dict() for card in cards])
+    # Convert ObjectId to string for JSON serialization
+    result = []
+    for card in cards:
+        card_dict = card.to_mongo().to_dict()
+        card_dict['id'] = str(card_dict.pop('_id'))  # Convert _id to string and rename to id
+        result.append(card_dict)
+    return jsonify(result)
 
 
 @app.route('/api/seed_data', methods=['GET'])
