@@ -28,7 +28,7 @@ def get_diseases():
         cards = DiseaseCard.objects(name__icontains=query)
     else:
         cards = DiseaseCard.objects()
-    return jsonify(cards)
+    return jsonify([card.to_mongo().to_dict() for card in cards])
 
 
 if __name__ == '__main__':
