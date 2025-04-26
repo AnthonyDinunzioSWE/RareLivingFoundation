@@ -6,8 +6,6 @@ import os
 
 load_dotenv()
 
-connect('rare_diseases', host=os.getenv('MONGO_URI'))
-
 app = Flask(__name__)
 CORS(app)
 
@@ -31,5 +29,6 @@ def get_diseases():
 
 
 if __name__ == '__main__':
+    connect('rare_diseases', host=os.getenv('MONGO_URI'))
     app.run(debug=True)
 
