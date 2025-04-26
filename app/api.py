@@ -31,7 +31,7 @@ def get_diseases():
     return jsonify([card.to_mongo().to_dict() for card in cards])
 
 
-@app.route('/api/seed_data', methods=['POST'])
+@app.route('/api/seed_data', methods=['GET'])
 def seed_data():
     try:
         with open('data/disease_data.json', 'r') as file:
@@ -46,7 +46,7 @@ def seed_data():
         return jsonify({'message': 'Data seeded successfully'}), 200
     except Exception as e:
         return jsonify({'message': 'Error seeding data', 'error': str(e)}), 500
-        
+
 
 
 if __name__ == '__main__':
