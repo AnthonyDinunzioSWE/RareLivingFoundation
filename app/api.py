@@ -182,7 +182,7 @@ def seed_data():
 
 
 if __name__ == '__main__':
-   try:
+    try:
         connect('rare_diseases', host=os.getenv('MONGO_URI'))
         print("MongoDB connection successful!")
     except Exception as e:
