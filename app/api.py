@@ -157,7 +157,7 @@ def seed_data():
                     }
                 ]
 
-         for item in data:
+        for item in data:
             DiseaseCard(
                 name=item['name'],
                 symptoms=item['symptoms'],
